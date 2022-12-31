@@ -34,6 +34,7 @@ class ChatGPT:
         captcha_solver: str = 'pypasser',
         solver_apikey: str = '',
         login_cookies_path: str = '',
+        force_headless: bool = False,
     ) -> None:
         '''
         Initialize the ChatGPT class\n
@@ -102,7 +103,7 @@ class ChatGPT:
 
         self.__is_headless = (
             platform.system() == 'Linux' and 'DISPLAY' not in os.environ
-        )
+        ) or ( force_headless )
         self.__verbose_print('[0] Platform:', platform.system())
         self.__verbose_print('[0] Display:', 'DISPLAY' in os.environ)
         self.__verbose_print('[0] Headless:', self.__is_headless)
